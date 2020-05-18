@@ -1,4 +1,7 @@
 colors = {0: "red", 1: "green", 2: "yellow", 3: "blue"}
+
+from LudoWorld import LudoWorld
+
 ## This class is for the gatti
 class gatti:
     loc = -1
@@ -7,15 +10,15 @@ class gatti:
     SAFEZONES = [-1, 0, 8, 13, 21, 26, 34, 39, 47]
     HOMEZONES = [51, 52, 53, 54, 55, 56]
 
-    def __init__ (self,color):
+    def __init__ (self, color):
         self.color = color
         self.loc = -1
 
-    def move(self,numMoves):
+    def move(self, numMoves):
         # If the gatti is at its start position
-        if(self.loc < 0 ):
+        if self.loc < 0:
             # Gatti needs a 6 to move out from start position
-            if(numMoves==6):
+            if numMoves == 6:
                 print("Its a six!")
                 self.loc+=1
             # Do nothing if its not a six
@@ -23,7 +26,7 @@ class gatti:
                 print("Its not a six! Still Stuck!")
                 #self.loc+=numMoves
         # if it is not a six
-        elif (self.loc + numMoves <= gatti.MAXMOVES):
+        elif self.loc + numMoves <= gatti.MAXMOVES:
             self.loc = self.loc + numMoves
         else:
             print("here")
@@ -31,20 +34,24 @@ class gatti:
 
         #inSafeZone=self.isInSafeZone()
 
-
 class startZone:
+    # suru garney game ko color haru lai
+    # always start with two players
     allGattis = {
         "red": set(),
         "blue": set(),
         "green": set(),
         "yellow": set()
     }
-    def __init__(self,players):
+
+    def __init__(self, players):
+        # choose how many players to play
         self.players=players
         for i in self.allGattis:
             pass
             #print(self.allGattis[i])
 
+        # assin gatti of different color to the player
         for color in self.players:
             for i in range(4):
                #print("{}".format(allGattis[colors[color]]))
@@ -66,39 +73,9 @@ class startZone:
 
 
 
-import random as random
-
-class ludoWorld:
-
-    def __init__(self,numPlayers):
-        self.players=random.sample(colors.keys(), numPlayers)
-        print(self.players)
-        self.startZone = startZone(self.players)
-        self.turn=self.players.pop()
-
-    def decideTurn(self):
-        self.players.append(self.turn)
-        self.turn=self.players.pop()
-
-    def chooseGattiToPlay(self,gatti):
-        gatti=gatti()
-        random.randint(1,4)
-
-    def moveGatti(self):
-        moves=random.randint(1,6)
-        #moves = 6
-        self.playerColor = colors[self.turn]
-        for j in self.startZone.allGattis[colors[self.turn]]:
-            j.move(moves)
-            self.startZone.checkOtherGattis(j)
-    def showGattiStatus(self):
-        for i in self.startZone.allGattis:
-            print(i)#len(self.startZone.allGattis[i]))
-            for j in self.startZone.allGattis[i]:
-                print(j.loc)
 
 
-x=ludoWorld(2)
+x=LudoWorld(2)
 x.moveGatti()
 x.showGattiStatus()
 
