@@ -13,31 +13,28 @@ class StartZone:
 
     def __init__(self, players):
         # choose how many players to play
-        self.players=players
+        self.players = players
         for i in self.allGattis:
             pass
-            #print(self.allGattis[i])
+            # print(self.allGattis[i])
 
         # assin gatti of different color to the player
         for color in self.players:
             for i in range(4):
-               #print("{}".format(allGattis[colors[color]]))
+                # print("{}".format(allGattis[colors[color]]))
                 self.allGattis[Gatti.colors[color]].add(Gatti(color))
-                #print("{} {}".format(i,k))
+            # print("{} {}".format(i,k))
 
-    def checkOtherGattis(self, gatti):
+    def check_other_gattis(self, gatti):
         for color in self.players:
-            if(color != gatti.color):
+            if color != gatti.color:
                 for otherGatti in self.allGattis[Gatti.colors[color]]:
-                    if(otherGatti.loc==gatti.loc):
+                    if otherGatti.loc == gatti.loc:
                         print(otherGatti.color)
-                        otherGatti.loc=-1
+                        otherGatti.loc = -1
 
-
-
-                    #print("{} {}".format(i,k))
-        #if(self.players)
-
+                    # print("{} {}".format(i,k))
+        # if(self.players)
 
 # for i, k in enumerate(colors):
 #     print(k)
