@@ -10,10 +10,8 @@ class LudoWorld:
         print(self.players)
 
         self.startZone = StartZone(self.players)
-        print(self.startZone)
 
         self.turn = self.players.pop()
-        print(self.turn)
 
     def decide_turn(self):
         self.players.append(self.turn)
