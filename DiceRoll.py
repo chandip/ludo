@@ -1,17 +1,22 @@
 import random
 
 
-def randomnumbers():
-    r = random.randrange(1, 7)
-    return r
+def generate_randomnumbers():
+    return random.randrange(1, 7)
+
 
 
 def get_only_six():
+    dice_rolled = []
     while True:
-        rand_number = randomnumbers()
+        rand_number = generate_randomnumbers()
         print(rand_number)
+        dice_rolled.append(rand_number)
         if rand_number == 6:
-            print("got the number")
+            print("Found number")
             break
+    print("rolled \"{}\" time".format(len(dice_rolled)))
+
+
 
 
